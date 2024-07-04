@@ -1,0 +1,10 @@
+/state1,/home/administrator/video_streams/Video1.STREAM,1649;
+/state2,/home/administrator/video_streams/Video2.STREAM,1481;
+/state3,/home/administrator/video_streams/Video3.STREAM,857;
+/state4,/home/administrator/video_streams/Video4.STREAM,1615;
+/state5,/home/administrator/video_streams/Video5.STREAM,1477;
+/state6,/home/administrator/video_streams/Video1.STREAM,1649;
+/state7,/home/administrator/video_streams/Video2.STREAM,1481;
+/state8,/home/administrator/video_streams/Video3.STREAM,857;
+/state9,/home/administrator/video_streams/Video4.STREAM,1615;
+/state10,/home/administrator/video_streams/Video5.STREAM,1477;
