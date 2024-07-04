@@ -1,5 +1,5 @@
 /*
-g++ -o lcdScreenApp lcdScreenApp.cpp KS0108X3_RPI_Driver.cpp osc.cpp apa102LEDStrip.cpp colourObject.cpp -lgpiod -fpermissive -pthread
+g++ -o lcdScreenApp lcdScreenApp.cpp KS0108X3_RPI_Driver.cpp osc.cpp apa102LEDStrip.cpp colourObject.cpp -VBitmap.cpp -lgpiod -fpermissive -pthread
 
 Launch "./lcdScreenApp IP_ADDRESS configFile"
 
