@@ -4,7 +4,7 @@
 
 # Hardware Set up
 
-- 1 x Pahros CL Conroler
+- 1 x Pahros CL Controler
 - 1 x Power insertion box
-- 10 x Philips Vaya 8Pixel RGB DMX LED Tubes
+- 10 x Philips Vaya, 4Foot, 8Pixel RGB DMX LED Tubes
 
