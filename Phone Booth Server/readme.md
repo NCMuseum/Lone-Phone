@@ -11,7 +11,7 @@
 - disable camera
 ```
 
-- Open the boot config file and add the following to enable SPI1
+- Open the boot config file and add the following to enable SPI1 to enable the LED Driver
 
 ```
 sudo nano /boot/firmware/config.txt
