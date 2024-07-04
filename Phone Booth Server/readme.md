@@ -57,6 +57,10 @@ make
 - PIN_CS2 = GPIO-24
 - PIN_RES = GPIO-1
 
+# Hardware Connectivity
+
+![Interface Board](https://github.com/NCMuseum/Lone-Phone/blob/main/Phone%20Booth%20Server/RPI_to_KS0108_InterfaceBoard.png)
+
 # Prerequsites
 
 -  A folder contaning all the PNG Video stream files creating using the PNG Ecnoder tool in this repo. 
