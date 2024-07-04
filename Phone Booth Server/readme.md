@@ -39,10 +39,10 @@ sudo apt-get install pure-ftpd
 sudo apt-get install libgpiod-dev
 ```
 
-- Compile with below or the included make file
+- Compile via make file
 
 ```
-TBD or use make
+make
 ```
 
 # Pin configuration for the RPi5
@@ -56,3 +56,31 @@ TBD or use make
 - PIN_CS1 = GPIO-23
 - PIN_CS2 = GPIO-24
 - PIN_RES = GPIO-1
+
+# Prerequsites
+
+-  A folder contaning all the PNG Video stream files creating using the PNG Ecnoder tool in this repo. 
+-  The file "configFile.txt" tells the app what UDP Message/OSC control is mapped to what Video File and example of one config file entry
+```
+/state1,/home/user/video_streams/Video1.STREAM,1649;
+```
+The UDP Message "state1" mapped to OSC Control "/state1" will plau video stream "/home/user/video_streams/Video1.STREAM" which has "1649" frames
+
+# Launching the app manualy or via auto run
+
+TO manualy launch the app
+```
+./lcdScreenApp IP_ADDRESS_OF_DEVICE CONFIG_FILE_NAME
+```
+eg
+```
+./lcdScreenApp 192.168.100.123 configFile.txt
+```
+
+# Networking
+
+Server recieves UDP messages (via unicast or broadcast) on port 2222 and re-transmits OSC mesages (via broadcast) on port 5555
+
+# To DO
+
+Pixel mapping and LED animations for the booth
