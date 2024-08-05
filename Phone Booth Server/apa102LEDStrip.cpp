@@ -1,61 +1,41 @@
 #include "apa102LEDStrip.h"
-#include <math.h>
+#include "math.h"
 
 apa102LEDStrip::apa102LEDStrip()
-{
+{  
 }
 
-apa102LEDStrip::apa102LEDStrip(short int numLEDs, char bytesPerLED, char globalBrightness)
+void apa102LEDStrip::init(unsigned short int numLEDs, uint8_t bytesPerLED, uint8_t globalBrightness)
 {  
   _numLEDs = numLEDs;
   _bytesPerLED = bytesPerLED;
-  _endFrameLength = 1;//round( (numLEDs/2)/8 );
-  _frameLength = (1+1+numLEDs+_endFrameLength)*bytesPerLED;
-  LEDs = new char[_frameLength];
+  _endFrameLength = round( (numLEDs/2)/8 );
+  _frameLength = (2+numLEDs+_endFrameLength)*bytesPerLED;
   _globalBrightness = globalBrightness;
-
-  //Start Frame
-  LEDs[0] = 0;
-  LEDs[1] = 0;
-  LEDs[2] = 0;
-  LEDs[3] = 0;
-  //Driver frame+PIXEL frames
-  for(_counter=_bytesPerLED; _counter<_frameLength-(_endFrameLength*_bytesPerLED); _counter+=_bytesPerLED)
-  {
-    LEDs[_counter] = _globalBrightness;
-    LEDs[_counter+1] = 0;
-    LEDs[_counter+2] = 0;
-    LEDs[_counter+3] = 0;
-  }
-  //END frames
-  for(_counter=_frameLength-(_endFrameLength*_bytesPerLED); _counter<_frameLength; _counter+=_bytesPerLED)
-  {
-    LEDs[_counter] = 255;
-    LEDs[_counter+1] = 255;
-    LEDs[_counter+2] = 255;
-    LEDs[_counter+3] = 255;
-  }
+  _fullByte=255;
+  _emptyByte=0;
+  LEDs = new uint8_t*[_frameLength];
+  SPIFrame = new uint8_t[_frameLength];
 }
 
-void apa102LEDStrip::setGlobalBrightness(char brightnessValue)
+void apa102LEDStrip::renderFrame()
 {
-  for(_counter=_bytesPerLED; _counter<_frameLength-(_endFrameLength*_bytesPerLED); _counter+=_bytesPerLED)
+	for(_index=0; _index<_frameLength; _index++)
+	{
+		SPIFrame[_index] = *LEDs[_index];
+	}
+}
+
+void apa102LEDStrip::setGlobalBrightness(uint8_t globalBrightness)
+{
+  _globalBrightness = globalBrightness;
+  for(_index=_bytesPerLED*2; _index<(_frameLength-(_endFrameLength*_bytesPerLED)); _index+=_bytesPerLED)
   {
-    LEDs[_counter] = brightnessValue;
+    LEDs[_index] = &_globalBrightness;
   }  
 }
 
-void apa102LEDStrip::setPixel(short int pixelIndex, char *pixelColour)
+void  apa102LEDStrip::setGlobalBrightness(unsigned short int pixelIndex, uint8_t pixelBrightness)
 {
-  _counter = 4*(pixelIndex+1);
-  LEDs[ _counter + 1 ] = pixelColour[2];
-  LEDs[ _counter + 2 ] = pixelColour[1];
-  LEDs[ _counter + 3 ] = pixelColour[0];
-}
-void apa102LEDStrip::getPixel(short int pixelIndex, char *pixelColour)
-{
-  _counter = 4*(pixelIndex+1);
-  pixelColour[2] = LEDs[ _counter + 1 ];
-  pixelColour[1] = LEDs[ _counter + 2 ];
-  pixelColour[0] = LEDs[ _counter + 3 ];
+  LEDs[ (_bytesPerLED*2)+(_bytesPerLED*pixelIndex) ] = &pixelBrightness;
 }
