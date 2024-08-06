@@ -31,7 +31,7 @@ class KS0108X3_RPI_Driver
 	void drawVLine(int16_t x, int16_t y, int16_t length, uint16_t color);
 	void getCircularPoints(unsigned short int circleX, unsigned short int circleY, unsigned short int circleR, unsigned short int angleFromTopLeftoRight, short int *points);
 	void drawCircle(unsigned short int x0,unsigned short int y0,unsigned short int radius, int16_t pixelColour);
-	
+
   private:
 	const char *chipname = "gpiochip4";
 	struct gpiod_chip *chip;
