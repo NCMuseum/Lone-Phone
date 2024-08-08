@@ -85,6 +85,6 @@ eg
 
 Server recieves UDP messages (via unicast or broadcast) on port 2222 and re-transmits OSC mesages (via broadcast) on port 5555
 
-# To DO
+# Pixel Layout on the TOP of the Booth
 
-Pixel mapping and LED animations for the booth
+![Phone Booth Top](https://github.com/NCMuseum/Lone-Phone/blob/main/Phone%20Booth%20Server/docs/PhoneBoothTop.png)
