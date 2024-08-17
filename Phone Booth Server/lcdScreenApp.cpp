@@ -63,7 +63,7 @@ typedef struct networkSystem{
 	int currentPacketLength=0;
 }networkSystem;
 networkSystem localNetwork;
-unsigned short int udpRXPort = 5555;
+unsigned short int udpRXPort = 2222;
 unsigned short int oscTXPort = 5556;
 sockaddr_in broadcastOSCAddress;
 int broadcastEnable=1;
