@@ -86,7 +86,7 @@ int SPI1;
 char *SPI1Device = "/dev/spidev1.0";
 uint8_t spiMode;
 uint8_t bits = 8;
-uint32_t speed = 5000000;
+uint32_t speed = 2000000;
 
 
 void playStream(char* streamFile, unsigned short int totalFrames);
